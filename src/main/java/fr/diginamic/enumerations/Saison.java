@@ -32,16 +32,35 @@ public enum Saison {
 	 * @param libelle libellé
 	 * @return {@link Saison}
 	 */
+//	public static Saison valueOfLibelle(String libelle) {
+//		Saison[] saisons = Saison.values();
+//		for (Saison saison : saisons) {
+//			if (libelle.equals(saison.getLibelle())) {
+//				return saison;
+//			}
+//			else {
+//				return null;
+//			}
+//		}
+//		return null;
+//	}
+
+	// Nouvelle méthode valueOfLibelle
 	public static Saison valueOfLibelle(String libelle) {
+		// Cas aux limites : Si le libellé fourni est null, on évite le crash et on retourne null directement
+		if (libelle == null) {
+			return null;
+		}
+
 		Saison[] saisons = Saison.values();
 		for (Saison saison : saisons) {
-			if (libelle.equals(saison.getLibelle())) {
-				return saison;
-			}
-			else {
-				return null;
+			// Cas nominal : On compare
+			if (libelle.equals(saison.getLibelle())) { // Methode cas d'école a connaître : algorithme type
+				return saison; // Trouvé ! On arrête la méthode ici en retournant la saison
 			}
 		}
+
+		// On a parcouru TOUTES les saisons et on n'a rien trouvé (ex: "Toto")
 		return null;
 	}
 
